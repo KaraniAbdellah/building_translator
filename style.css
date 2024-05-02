@@ -1,0 +1,106 @@
+/* Start Global Roles */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: "Varela", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+button {
+    border: 0;
+    outline: 0;
+}
+a {
+    text-decoration: none;
+    display: block;
+    color: black;
+}
+ul {
+    list-style: none;
+}
+:root {
+    --main-color: #f6f6f6;
+    --blueviolet-color: #8A2BE2;
+}
+.container {
+    margin-right: 70px;
+    margin-left: 70px;
+}
+@media (max-width: 767px) {
+    .container {
+        margin-right: 40px;
+        margin-left: 40px;
+    }
+}
+/* End Global Roles */
+.content-page {
+    text-align: center;
+    background-color: var(--main-color);
+    padding: 30px;
+}
+.content {
+    margin-bottom: 30px;
+}
+h1 {
+    color: var(--blueviolet-color);
+    margin-bottom: 60px;
+}
+.language-boxes {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.language-boxes select {
+    padding: 10px;
+    font-size: 15px;
+}
+.translate-boxes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    gap: 30px;
+}
+textarea {
+    font-weight: normal;
+    font-size: 20px;
+    padding: 5px;
+    height: 300px;
+}
+textarea#sourceText {
+    border: 2px solid var(--blueviolet-color);
+}
+textarea#resultText {
+    border: 2px solid black;
+}
+.click {
+    background-color: var(--blueviolet-color);
+    padding: 10px 30px;
+    color: white;
+    font-weight: 650;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: normal;
+}
+
+@media (max-width: 767px) {
+    .translate-boxes {
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+    }
+    .content-page {
+        padding: 5px;
+    }
+    .language-boxes {
+        justify-content: center;
+    }
+    select {
+        margin-bottom: 20px;
+    }
+}
+
+
+

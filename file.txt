@@ -1,0 +1,8 @@
+This File Will Be Contain the text and pdf, word, ... content 
+and then we are going to translate using google api translate.
+-- Features
+  Three cards For Some Previlages
+    First Will Be Free  
+    Second and thirth ... $
+  About us 
+  translate the files 📂 [pdf, word, text, ...]
