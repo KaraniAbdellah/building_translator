@@ -54,7 +54,9 @@ const icons_btns = document.querySelectorAll(".icons");
 icons_btns.forEach(element => {
     element.addEventListener("click", function(e) {
         if (e.target.classList.contains("copy")) {
-            let text = e.target.parentElement.parentElement.firstElementChild.value;
+            let ele = e.target.parentElement.parentElement.firstElementChild;
+            if (ele.classList.contains("mark")) ele = ele.nextElementSibling;
+            let text = ele.value;
             navigator.clipboard.writeText(text);
         }
         if (e.target.classList.contains("micro")) {
@@ -74,6 +76,32 @@ icons_btns.forEach(element => {
 
 
 
+// Ensure the browser supports the Web Speech API
+if ('webkitSpeechRecognition' in window) {
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
+    recognition.lang = 'en-US'; // Set the language as needed
+    recognition.interimResults = false; // If you want final results only
+    recognition.maxAlternatives = 1;
+
+    // Handle the result event
+    recognition.onresult = (event) => {
+        const spokenText = event.results[0][0].transcript;
+        console.log(spokenText); // Log the recognized text to the console
+    };
+
+    // Handle errors
+    recognition.onerror = (event) => {
+        console.error('Speech recognition error:', event.error);
+    };
+
+    // Attach a click event listener to the element with class "micro"
+    document.querySelector('.micro').addEventListener('click', () => {
+        recognition.start(); // Start speech recognition
+        console.log('Listening...');
+    });
+} else {
+    console.log('Web Speech API not supported in this browser.');
+}
 
 
 
