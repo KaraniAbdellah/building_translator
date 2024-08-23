@@ -1,29 +1,82 @@
-// This The First Version
+// Function For Translating The Content
 function translate() {
-    var sourceText = document.getElementById('sourceText').value;
-    var sourceLang = document.getElementById('sourceLang').value;
-    var targetLang = document.getElementById('targetLang').value;
-    var url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl="+ sourceLang + "&tl=" + targetLang + "&dt=t&q=" + encodeURI(sourceText);
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('resultText').value = data[0][0][0];
-        })
-        .catch(error => console.error('Error:', error));
+    let sourceText = document.getElementById('sourceText').value;
+    let sourceLang = document.getElementById('sourceLang').value;
+    let targetLang = document.getElementById('targetLang').value;
+    if (sourceText) {
+        let url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl="+ sourceLang + "&tl=" + targetLang + "&dt=t&q=" + encodeURI(sourceText);
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('resultText').value = data[0][0][0];
+            })
+            .catch(error => console.error('Error:', error));
+    }
 }
-var source = document.querySelector("#sourceText");
-var result = document.querySelector("#resultText");
+
+// Transalte The Content && Handle The Delete Content
+let source = document.querySelector("#sourceText");
+let result = document.querySelector("#resultText");
+let mark = document.querySelector(".mark");
+
 source.oninput = function() {
     translate();
+    if (source.value != "") mark.style.display = "block";
+    else mark.style.display = "none";
 }
 source.addEventListener("focus", function() {
-    result.disabled = false;
-});
-source.addEventListener("mouseleave", function() {
     result.disabled = true;
 });
 
-// Start Dealing With Icons
+mark.addEventListener("click", function(e) {
+    source.value = "";
+    result.value = "";
+    mark.style.display = "none";
+});
+
+
+// Changing The Language
+const sourceLang = document.getElementById("sourceLang");
+const targetLang = document.getElementById("targetLang");
+
+targetLang.addEventListener("click", function() {
+    translate();
+});
+
+sourceLang.addEventListener("click", function() {
+    translate();
+});
+
+
+
+// Start Handle Operations
+const icons_btns = document.querySelectorAll(".icons");
+icons_btns.forEach(element => {
+    element.addEventListener("click", function(e) {
+        if (e.target.classList.contains("copy")) {
+            let text = e.target.parentElement.parentElement.firstElementChild.value;
+            navigator.clipboard.writeText(text);
+        }
+        if (e.target.classList.contains("micro")) {
+            
+        }
+        if (e.target.classList.contains("volume")) {
+            
+        }
+    })
+});
+
+// fix the style and colors 
+// search for voise in js
+// search how w can speaj in js
+
+
+
+
+
+
+
+
 
 
 

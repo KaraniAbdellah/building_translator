@@ -21,7 +21,7 @@ ul {
     list-style: none;
 }
 :root {
-    --main-color: #f7f7f7;
+    --main-color: #fcfcfc;
     --black-color: #000000;
 }
 .container {
@@ -62,19 +62,65 @@ h1 {
     padding: 10px;
     font-size: 15px;
 }
+
+/* Start With Boxes */
+
+.mark {
+    position: relative;
+    display: none;
+}
+.mark i {
+    position: absolute;
+    top: 2px;
+    right: -8px;
+    width: 40px;
+    border-radius: 0;
+    text-align: center;
+    padding: 8px;
+}
 .translate-boxes {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
     gap: 30px;
     margin-bottom: 20px;
 }
+textarea {
+    border-radius: 5px;
+}
 .icons {
     text-align: left;
 }
 i {
+    position: relative;
     cursor: pointer;
     margin-right: 10px;
     font-size: 20px;
+    background-color: rgb(228, 228, 228);
+    width: 50px;
+    padding: 15px;
+    border-radius: 40px;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    z-index: 0;
+}
+i::after {
+    content: "";
+    position: absolute;
+    background-color: rgb(189, 189, 189);
+    bottom: 0%;
+    right: 0%;
+    width: 0%;
+    height: 10%;
+    border-radius: inherit;
+    transition: 0.3s;
+    z-index: -1;
+}
+i::before {
+    z-index: 1;
+}
+i:hover::after {
+    width: 100%;
+    height: 100%;
 }
 textarea {
     font-weight: normal;
