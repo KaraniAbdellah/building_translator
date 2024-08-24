@@ -68,40 +68,34 @@ icons_btns.forEach(element => {
     })
 });
 
-// fix the style and colors 
-// search for voise in js
-// search how w can speaj in js
 
 
 
+// convert text to voice
+const volume_icon = document.querySelector(".volume");
+volume_icon.addEventListener("click", function() {
+    
+    // convert text to voice
+
+});
 
 
-// Ensure the browser supports the Web Speech API
-if ('webkitSpeechRecognition' in window) {
-    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
-    recognition.lang = 'en-US'; // Set the language as needed
-    recognition.interimResults = false; // If you want final results only
-    recognition.maxAlternatives = 1;
+// convert voice to text
+const micro_icon = document.querySelector(".micro");
+micro_icon.addEventListener("click", function() {
+    
+    // convert voice to text
+    console.log("hello");
+    let utterance = new SpeechSynthesisUtterance("Educative.io");
+    speechSynthesis.speak(utterance);
 
-    // Handle the result event
-    recognition.onresult = (event) => {
-        const spokenText = event.results[0][0].transcript;
-        console.log(spokenText); // Log the recognized text to the console
-    };
+});
 
-    // Handle errors
-    recognition.onerror = (event) => {
-        console.error('Speech recognition error:', event.error);
-    };
-
-    // Attach a click event listener to the element with class "micro"
-    document.querySelector('.micro').addEventListener('click', () => {
-        recognition.start(); // Start speech recognition
-        console.log('Listening...');
-    });
-} else {
-    console.log('Web Speech API not supported in this browser.');
-}
+if ('speechSynthesis' in window) {
+    console.log("// Speech Synthesis is supported 🎉");
+   }else{
+     console.log("// Speech Synthesis is not Supported 😞 ");
+   }
 
 
 
