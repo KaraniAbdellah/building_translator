@@ -91,12 +91,6 @@ micro_icon.addEventListener("click", function() {
 
 });
 
-if ('speechSynthesis' in window) {
-    console.log("// Speech Synthesis is supported 🎉");
-   }else{
-     console.log("// Speech Synthesis is not Supported 😞 ");
-   }
-
 
 
 
